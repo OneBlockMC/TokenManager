@@ -25,7 +25,6 @@ import me.realized.tokenmanager.util.Log;
 import me.realized.tokenmanager.util.NumberUtil;
 import me.realized.tokenmanager.util.Reloadable;
 import me.realized.tokenmanager.util.StringUtil;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -85,8 +84,6 @@ public class TokenManagerPlugin extends JavaPlugin implements TokenManager, List
 
         new TMCommand(this).register();
         new TokenCommand(this).register();
-
-        new Metrics(this);
 
         if (!configuration.isCheckForUpdates()) {
             return;
