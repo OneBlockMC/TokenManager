@@ -56,12 +56,6 @@ public class FileDatabase extends AbstractDatabase {
 
         if (section != null) {
             for (final String key : section.getKeys(false)) {
-                if (ProfileUtil.isUUID(key) != online) {
-                    // clear to prevent saving previously loaded data overwriting the file
-                    data.clear();
-                    throw new Exception(String.format(SERVER_MODE_MISMATCH, online ? "ONLINE" : "OFFLINE", online ? "UUIDs" : "usernames"));
-                }
-
                 data.put(key, section.getLong(key));
             }
         }
