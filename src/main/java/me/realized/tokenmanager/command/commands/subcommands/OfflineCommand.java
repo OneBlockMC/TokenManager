@@ -7,6 +7,7 @@ import java.util.OptionalLong;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import me.realized.tokenmanager.TokenManagerPlugin;
+import me.realized.tokenmanager.api.event.TMTokenTransferEvent;
 import me.realized.tokenmanager.command.BaseCommand;
 import me.realized.tokenmanager.util.NumberUtil;
 import me.realized.tokenmanager.util.profile.ProfileUtil;
@@ -73,6 +74,13 @@ public class OfflineCommand extends BaseCommand {
                 if (!balance.isPresent()) {
                     dataManager.queueCommand(target, type, amount, silent);
                     sendMessage(sender, false, "&c" + target.getName() + "'s data is currently loading! Command has been queued for future execution.");
+                    return;
+                }
+
+                TMTokenTransferEvent event = new TMTokenTransferEvent(sender, target, amount);
+                Bukkit.getPluginManager().callEvent(event);
+
+                if (event.isCancelled()) {
                     return;
                 }
 

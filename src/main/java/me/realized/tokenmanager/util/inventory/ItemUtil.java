@@ -220,6 +220,7 @@ public final class ItemUtil {
             return;
         }
 
+        /*
         if (key.equalsIgnoreCase("unbreakable") && value.equalsIgnoreCase("true")) {
             if (CompatUtil.isPre1_12()) {
                 meta.spigot().setUnbreakable(true);
@@ -230,6 +231,8 @@ public final class ItemUtil {
             item.setItemMeta(meta);
             return;
         }
+
+         */
 
         if (key.equalsIgnoreCase("flags")) {
             final String[] flags = value.split(",");
